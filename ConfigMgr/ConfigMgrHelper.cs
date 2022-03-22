@@ -89,9 +89,11 @@ namespace ConfigMgr
         {
             var version = "0.0";
             ManagementObjectCollection objPackages = ExecuteQuery("SELECT Version FROM SMS_Site");
+            var i = 1;
             foreach (ManagementObject objPackage in objPackages)
             {
                 version = objPackage["Version"].ToString().Trim();
+                WriteLine($"{i++} - {version}");
             }
 
             return new Version(version);
